@@ -4,3 +4,4 @@
 ]]
 
 epilyx_industry = {}
+dofile(path .. "/drill.lua")
