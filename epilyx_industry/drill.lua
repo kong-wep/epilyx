@@ -8,7 +8,7 @@ local function chat(text)
 end
 local function drill_no_power(itemstack, user, node, digparams)
    item_name = itemstack:get_name()
-   if item_name == MODFORMAT .. "" then
+   if item_name == MODFORMAT .. "copper_drill" then
    end
    if itemstack:get_wear()+digparams.wear <= 65535 then
       itemstack:add_wear(digparams.wear)
