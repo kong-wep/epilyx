@@ -20,3 +20,6 @@ dofile(modpath .. "/drill.lua")
 
 -- Power Items
 dofile(modpath .. "/power.lua")
+
+-- Machines
+dofile(modpath .. "/machine.lua")

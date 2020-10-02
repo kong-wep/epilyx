@@ -1,8 +1,8 @@
 --[[
-   Power Items
+  Machines
 ]]
 -- Form Specs
-local function charger_menu()
+local function crusher_menu()
    local text = "hello world"
    local formspec = {
         "formspec_version[3]",
@@ -16,24 +16,22 @@ end
 --
 
 -- Register Blocks
-minetest.register_node("epilyx_industry:charger",{
-    description = "Charger",
+minetest.register_node("epilyx_industry:crusher", {
+    description = "Crusher",
     tiles = {"copper_drill.png"},
     is_ground_content = false,
     groups = {metallic=3},
     after_place_node = function(pos, placer)
         local meta = minetest.get_meta(pos)
-        meta:set_string("formspec",charger_menu())
+        meta:set_string("formspec",crusher_menu())
     end,
     on_receive_fields = function(pos, formname, fields, player)
         if fields.quit then
            epilyx.chat("a")
             return
         end
-
         print(fields.x)
     end
 })
-minetest.register_alias("charger","epilyx_industry:charger")
+minetest.register_alias("crusher","epilyx_industry:crusher")
 -- End Register Blocks
-
