@@ -18,9 +18,9 @@ end
 -- Register Blocks
 minetest.register_node("epilyx_industry:crusher", {
     description = "Crusher",
-    tiles = {"copper_drill.png"},
+    tiles = {"crusher.png"},
     is_ground_content = false,
-    groups = {metallic=3},
+    groups = {metallic=3,cracky=1},
     after_place_node = function(pos, placer)
         local meta = minetest.get_meta(pos)
         meta:set_string("formspec",crusher_menu())
