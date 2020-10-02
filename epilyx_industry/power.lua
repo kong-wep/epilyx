@@ -3,13 +3,13 @@
 ]]
 -- Form Specs
 local function charger_menu()
-   local text = "hello world"
+   local text = "Charger"
    local formspec = {
         "formspec_version[3]",
-        "size[6,3.476]",
+        "size[10,7]",
         "label[0.375,0.5;", minetest.formspec_escape(text), "]",
-        "field[0.375,1.25;5.25,0.8;number;Number;]",
-        "button[1.5,2.3;3,0.8;guess;Guess]"
+        "list[context;main;0.1,1;1,1;]",
+        "list[current_player;main;0.15,3;8,4;]"
     }
    return table.concat(formspec, "")
 end
