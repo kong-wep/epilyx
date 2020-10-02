@@ -19,19 +19,11 @@ end
 minetest.register_node("epilyx_industry:charger",{
     description = "Charger",
     tiles = {"copper_drill.png"},
-    is_ground_content = true,
+    is_ground_content = false,
     groups = {metallic=3},
     after_place_node = function(pos, placer)
-        -- This function is run when the chest node is placed.
-        -- The following code sets the formspec for chest.
-        -- Meta is a way of storing data onto a node.
-
         local meta = minetest.get_meta(pos)
-        meta:set_string("formspec",
-                "formspec_version[3]" ..
-                "size[5,5]" ..
-                "label[1,1;This is shown on right click]" ..
-                "field[1,2;2,1;x;x;]")
+        meta:set_string(charger_menu())
     end,
     on_receive_fields = function(pos, formname, fields, player)
         if fields.quit then
@@ -45,8 +37,3 @@ minetest.register_node("epilyx_industry:charger",{
 minetest.register_alias("charger","epilyx_industry:charger")
 -- End Register Blocks
 
-minetest.register_chatcommand("game", {
-    func = function(name)
-       minetest.show_formspec(name, "epilyx_industry", charger_menu())
-    end
-})
