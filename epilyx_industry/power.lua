@@ -42,10 +42,6 @@ minetest.register_node("epilyx_industry:charger",{
       minetest.get_node_timer(pos):start(1)
    end,
    on_receive_fields = function(pos, formname, fields, player)
-      local name = minetest.get_meta(pos):get_inventory():get_stack("input",1):get_name()
-      local c = minetest.get_item_group(name, "epilyx_chargable")
-      if c == 1 then
-      end
    end,
    on_timer = function(pos,elapsed)
       -- Charge
