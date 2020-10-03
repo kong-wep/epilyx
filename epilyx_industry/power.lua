@@ -8,7 +8,7 @@ local function charger_menu()
         "formspec_version[3]",
         "size[10,7]",
         "label[0.375,0.5;", minetest.formspec_escape(text), "]",
-        "list[context;main;0.1,1;1,1;]",
+        "list[context;input;0,0;1,1;]",
         "list[current_player;main;0.15,3;8,4;]"
     }
    return table.concat(formspec, "")
@@ -34,7 +34,7 @@ minetest.register_node("epilyx_industry:charger",{
     groups = {metallic=3,cracky=1},
     after_place_node = function(pos, placer)
         local meta = minetest.get_meta(pos)
-        meta:set_string("formspec",charger_menu())
+        inv:set_size('Input',1)
     end,
     on_receive_fields = function(pos, formname, fields, player)
         if fields.quit then
