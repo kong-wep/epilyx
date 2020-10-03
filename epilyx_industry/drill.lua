@@ -34,13 +34,13 @@ minetest.register_tool("epilyx_industry:copper_drill", {
         groupcaps = {
             crumbly = {
                 maxlevel = 1,
-                uses = 10,
-                times = { [1]=0.00, [2]=0.50, [3]=0.00 }
+                uses = 100,
+                times = { [1]=2.00, [2]=0.50, [3]=0.30 }
             },
             cracky = {
                 maxlevel = 1,
                 uses = 1,
-                times = { [1]=0.00, [2]=0.50, [3]=0.00 }
+                times = { [1]=0.00, [2]=0.50, [3]=0.80 }
             },
         },
         damage_groups = {fleshy=2},
