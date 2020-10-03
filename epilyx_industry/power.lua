@@ -34,7 +34,6 @@ minetest.register_node("epilyx_industry:charger",{
     groups = {metallic=3,cracky=1},
     after_place_node = function(pos, placer)
         local meta = minetest.get_meta(pos)
-        inv:set_size('Input',1)
     end,
     on_receive_fields = function(pos, formname, fields, player)
         if fields.quit then

@@ -24,10 +24,13 @@ local WEAR_TABLE = {
 }
 
 
+
+
 -- Register Tools
-minetest.register_tool("epilyx_industry:copper_drill", {
-    description = "Copper Drill",
-    inventory_image = "copper_drill.png",
+local function default_drill(material_name,description)
+ minetest.register_tool("epilyx_industry:"..material_name.."_drill", {
+    description = description,
+    inventory_image = material_name .."_drill.png",
     tool_capabilities = {
         full_punch_interval = 1.5,
         max_drop_level = 0,
@@ -46,12 +49,14 @@ minetest.register_tool("epilyx_industry:copper_drill", {
         damage_groups = {fleshy=2},
     },
 })
-minetest.register_alias("copper_drill","epilyx_industry:copper_drill")
+minetest.register_alias(material_name.."_drill","epilyx_industry:"..material_name.."_drill")
+end
 
+default_drill("copper","Copper Drill")
 
 minetest.register_tool("epilyx_industry:electric_drill", {
-    description = "Electric_drill",
-    inventory_image = "copper_drill.png",
+    description = "Electric Drill",
+    inventory_image = "electric_drill.png",
     tool_capabilities = {
         full_punch_interval = 1.5,
         max_drop_level = 0,
@@ -75,17 +80,25 @@ minetest.register_alias("electric_drill","epilyx_industry:electric_drill")
 -- End Register Tools
 
 -- Register Items
-minetest.register_craftitem("epilyx_industry:copper_drill_head", {
-    description = "Copper Drill Head",
-    inventory_image = "copper_drill_head.png",
+local function default_head(material_name,description)
+minetest.register_craftitem("epilyx_industry:"..material_name.."_drill_head", {
+    description = description,
+    inventory_image = material_name.."_drill_head.png",
 })
-minetest.register_alias("copper_drill_head","epilyx_industry:copper_drill_head")
+minetest.register_alias(material_name.."_drill_head","epilyx_industry:"..material_name.."_drill_head")
+end
 
-minetest.register_craftitem("epilyx_industry:electic_drill_head", {
-    description = "Electric Drill Head",
-    inventory_image = "electric_drill_head.png",
-})
-minetest.register_alias("electric_drill_head","epilyx_industry:electric_drill_head")
+default_head("copper","Copper Drill Head")
+
+default_head("tin","Tin Drill Head")
+
+default_head("obsidian","Obsidian Drill Head")
+
+default_head("obsidian","Obsidian Drill Head")
+
+default_head("diamond","Diamond Drill Head")
+
+default_head("electric","Electric Drill Head")
   
 minetest.register_craftitem("epilyx_industry:drill_base", {
     description = "Drill Base",
