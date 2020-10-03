@@ -7,8 +7,9 @@ local function crusher_menu()
    local formspec = {
         "formspec_version[3]",
        "size[10.25,8.5]",
-       "list[context;input;0,0;1,1]",
-       "list[current_player;main;0.25,3.5;8,4]"
+       "list[context;input;0,0;2,2]",
+       "list[current_player;main;0.25,3.5;8,4]",
+       "listring[]"
     }
    return table.concat(formspec, "")
 end
@@ -24,7 +25,7 @@ minetest.register_node("epilyx_industry:crusher", {
         local meta = minetest.get_meta(pos)
         meta:set_string("formspec",crusher_menu())
         local inv = meta:get_inventory()
-        inv:set_size('input',1)
+        inv:set_size('input',2)
     end,
     on_receive_fields = function(pos, formname, fields, player)
         if fields.quit then
