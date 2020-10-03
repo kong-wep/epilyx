@@ -6,10 +6,9 @@ local function crusher_menu()
    local text = "hello world"
    local formspec = {
         "formspec_version[3]",
-        "size[6,3.476]",
-        "label[0.375,0.5;", minetest.formspec_escape(text), "]",
-        "field[0.375,1.25;5.25,0.8;number;Number;]",
-        "button[1.5,2.3;3,0.8;guess;Guess]"
+       "size[10.25,8.5]",
+       "list[context;input;0,0;1,1]",
+       "list[current_player;main;0.25,3.5;8,4]"
     }
    return table.concat(formspec, "")
 end
@@ -24,13 +23,15 @@ minetest.register_node("epilyx_industry:crusher", {
     after_place_node = function(pos, placer)
         local meta = minetest.get_meta(pos)
         meta:set_string("formspec",crusher_menu())
+        local inv = meta:get_inventory()
+        inv:set_size('input',1)
     end,
     on_receive_fields = function(pos, formname, fields, player)
         if fields.quit then
            epilyx.chat("a")
             return
         end
-        print(fields.x)
+        epilyx.chat(fields.number)
     end
 })
 minetest.register_alias("crusher","epilyx_industry:crusher")
