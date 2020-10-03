@@ -7,7 +7,7 @@ local function crusher_menu()
    local formspec = {
         "formspec_version[3]",
        "size[10.25,8.5]",
-       "list[context;input;0,0;2,2]",
+       "list[context;input;0.25,0.25;2,2]",
        "list[current_player;main;0.25,3.5;8,4]",
        "listring[]"
     }
