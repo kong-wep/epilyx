@@ -29,6 +29,7 @@ local WEAR_TABLE = {
 -- Register Tools
 local function default_drill(material_name,description)
  minetest.register_tool("epilyx_industry:"..material_name.."_drill", {
+<<<<<<< HEAD
    description = description,
    inventory_image = material_name .."_drill.png",
    tool_capabilities = {
@@ -48,6 +49,27 @@ local function default_drill(material_name,description)
       },
       damage_groups = {fleshy=2},
    },
+=======
+    description = description,
+    inventory_image = material_name .."_drill.png",
+    tool_capabilities = {
+        full_punch_interval = 1.5,
+        max_drop_level = 0,
+        groupcaps = {
+            crumbly = {
+                maxlevel = 1,
+                uses = 100,
+                times = { [1]=2.00, [2]=0.50, [3]=0.30 }
+            },
+            cracky = {
+                maxlevel = 1,
+                uses = 1,
+                times = { [1]=0.00, [2]=0.50, [3]=0.80 }
+            },
+        },
+        damage_groups = {fleshy=2},
+    },
+>>>>>>> dce8609276a46443f07f844515e170710c38c33f
 })
 minetest.register_alias(material_name.."_drill","epilyx_industry:"..material_name.."_drill")
 end
