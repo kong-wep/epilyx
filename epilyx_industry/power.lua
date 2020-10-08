@@ -47,20 +47,12 @@ minetest.register_node("epilyx_industry:charger",{
       -- Charge
       local stack = minetest.get_inventory({type="node",pos=pos}):get_stack("input",1)
       local name = stack:get_name()
-      epilyx.chat(minetest.get_item_group(name, "epilyx_chargable"))
       if minetest.get_item_group(name, "epilyx_chargable") == 1 then
-         -- local tool_cap = epilyx.power_tools.types[name].tool_capabilities
+         local tool_cap = epilyx.power_tools.types[name].tool_capabilities
          local w = -3276
          stack:get_meta():set_tool_capabilities(tool_cap)
          stack:add_wear(w)
          minetest.get_meta(pos):get_inventory():set_stack("input",1,stack)
-         epilyx.chat("a")
-         local itemdef = minetest.registered_items[name]
-         if itemdef and itemdef._a then
-            epilyx.chat(itemdef._a)
-         end
-         -- stack:get_meta():set_string("a","b")
-         -- epilyx.chat(dump(stack:get_meta():to_table()))
       end
       return true
    end

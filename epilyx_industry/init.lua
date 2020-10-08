@@ -39,6 +39,7 @@ epilyx.power_tools.types = {}
 function epilyx.power_tools:create(name,description)
    local power_tool = {}
    setmetatable(power_tool,epilyx.power_tools)
+   self.name = "epilyx_industry:"..name
    self.tool_capabilities = {
       full_punch_interval = 1.5,
       max_drop_level = 0,
@@ -57,7 +58,7 @@ function epilyx.power_tools:create(name,description)
       damage_groups = {fleshy=2},
    }
    epilyx.power_tools:register(name,description,self.tool_capabilities)
-   epilyx.power_tools.types[name] = power_tool
+   epilyx.power_tools.types[self.name] = power_tool
    return power_tool
 end
 
@@ -69,7 +70,6 @@ function epilyx.power_tools:register(material_name,description,cap)
     tool_capabilities = cap,
     after_use = power_use,
     groups = {epilyx_chargable= 1},
-    _a = "c"
 })
 minetest.register_alias(material_name,"epilyx_industry:"..material_name)
 end
