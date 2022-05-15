@@ -8,11 +8,11 @@ local function crusher_menu()
        "size[10.25,8.5]",
        "list[context;input;2.5625,0.25;1,1]",
        "list[current_player;main;0.25,3.5;8,4]",
-        "image[2.5625,1.2;1,1;crusher_filler_bg.png]"..
+       "listring[]",
+        "image[2.5625,1.2;1,1;crusher_filler_bg.png]",
         "image[3.75,0.65;2,2;crusher_arrow.png]",
-        "list[context;input;2.5625,2.15;1,1]",
-        "list[context;input;6,1.2;1,1]",
-       "listring[]"
+        "list[context;fuel;2.5625,2.15;1,1]",
+        "list[context;output;6,1.2;1,1]",
     }
    return table.concat(formspec, "")
 end
@@ -28,14 +28,16 @@ minetest.register_node("epilyx_industry:crusher", {
         local meta = minetest.get_meta(pos)
         meta:set_string("formspec",crusher_menu())
         local inv = meta:get_inventory()
-        inv:set_size('input',2)
+        inv:set_size('input',1)
+        inv:set_size('fuel',1)
+        inv:set_size('output',1)
     end,
     on_receive_fields = function(pos, formname, fields, player)
-        if fields.quit then
-           epilyx.chat("a")
-            return
-        end
-        epilyx.chat(fields.number)
+        local inventory = minetest.get_inventory({type="node",pos=pos})
+        local input = inventory:get_stack("input",1) 
+        local fuel = inventory:get_stack("fuel",1) 
+        local output = inventory:get_stack("output",1) 
+        epilyx.chat(input:get_name())
     end
 })
 minetest.register_alias("crusher","epilyx_industry:crusher")

@@ -19,10 +19,10 @@ local function boiler_menu()
    local text = "hello world"
    local formspec = {
       "formspec_version[3]",
-      "size[6,3.476]",
-      "label[0.375,0.5;", minetest.formspec_escape(text), "]",
-      "field[0.375,1.25;5.25,0.8;number;Number;]",
-      "button[1.5,2.3;3,0.8;guess;Guess]"
+      "size[10.25,8.5]",
+      "list[context;input;0,0;2,2]",
+      "list[current_player;main;0.25,3.5;8,4]",
+      "listring[]"
    }
    return table.concat(formspec, "")
 end
@@ -61,12 +61,14 @@ minetest.register_alias("charger","epilyx_industry:charger")
 
 minetest.register_node("epilyx_industry:boiler",{
    description = "Boiler",
-   tiles = {"charger.png"},
+   tiles = {"crusher_top.png"},
    is_ground_content = false,
    groups = {metallic=3,cracky=1},
    after_place_node = function(pos, placer)
       local meta = minetest.get_meta(pos)
       meta:set_string("formspec",boiler_menu())
+      local inv = meta:get_inventory()
+      inv:set_size('input',1)
    end,
    on_receive_fields = function(pos, formname, fields, player)
       if fields.quit then
